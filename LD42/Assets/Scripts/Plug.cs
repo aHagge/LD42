@@ -8,7 +8,8 @@ public class Plug : MonoBehaviour {
     private bool inover;
 
     public int turretid;
-   
+
+    public Sprite onsprite, offsprite;
 
     private bool inhand;
 	// Use this for initialization
@@ -19,9 +20,14 @@ public class Plug : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-       
-        if (transform.parent = null)
+        if(transform.parent != null)
         {
+            gameObject.GetComponent<SpriteRenderer>().sprite = onsprite;
+        }
+        if (transform.parent == null)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = offsprite;
+
             if (turretid == 1)
             {           
                 gamemanager.turreton1 = false;
@@ -60,6 +66,7 @@ public class Plug : MonoBehaviour {
             inhand = false;
             if(transform.parent != null)
             {
+                
                 transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z - 1);
                 if (turretid == 1)
                 {
@@ -101,15 +108,13 @@ public class Plug : MonoBehaviour {
     {
         if(col.gameObject.tag == "Outlet" && !col.gameObject.GetComponent<Outlet>().somethinginit)
         {
-            print(col.gameObject.name);
-            gameObject.transform.SetParent(col.gameObject.transform);
-            col.gameObject.GetComponent<Outlet>().somethinginit = true;
+            gameObject.transform.parent = col.gameObject.transform;
         }
         
     }
     private void OnTriggerExit2D(Collider2D col)
     {
-        //transform.SetParent(null);
+        transform.SetParent(null);
     }
 
 }

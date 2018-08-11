@@ -21,6 +21,10 @@ public class Turret : MonoBehaviour {
         {
             gotit = true;
             StartCoroutine(Shoot());
+        }
+        if(!shooting)
+        {
+            gotit = false;
         }      
 	}
 
