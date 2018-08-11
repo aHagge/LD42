@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour {
 
+    public GameObject credits, normal;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,6 +17,8 @@ public class Menu : MonoBehaviour {
 		
 	}
 
+    public void quit()
+    { }
     public void Startgame()
     {
         SceneManager.LoadScene("Main");

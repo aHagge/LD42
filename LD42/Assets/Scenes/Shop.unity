@@ -177,11 +177,11 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281836827
-  m_fontColor: {r: 0.107467055, g: 0.6509434, b: 0.21900678, a: 1}
-  m_enableVertexGradient: 0
+    rgba: 4278238975
+  m_fontColor: {r: 1, g: 0.74655265, b: 0, a: 1}
+  m_enableVertexGradient: 1
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 1, g: 0.5320146, b: 0, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
