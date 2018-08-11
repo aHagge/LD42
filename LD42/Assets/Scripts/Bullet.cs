@@ -4,13 +4,29 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
+    public int bullethealth;
+
     public float speed;
 
 	void Start () {
-		
+        bullethealth = gamemanager.bulletpenetration;
 	}
 	
 	void Update () {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
+        if(bullethealth <= 0)
+        {
+            Destroy(gameObject);
+          
+        }
 	}
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Zombie")
+        {
+            bullethealth -= 1;
+            col.gameObject.GetComponent<Zombie>().health -= gamemanager.bulletdmg;
+        }
+    }
 }

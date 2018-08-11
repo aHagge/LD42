@@ -6,17 +6,22 @@ public class gamemanager : MonoBehaviour {
 
     public static gamemanager instance;
 
+
     public static bool turreton1, turreton2, turreton3, turreton4;
 
-
     public GameObject turret1, turret2, turret3, turret4;
+
+
+    public static int bulletpenetration = 1;
+    public static float bulletdmg = 30;
+    public static float turretspeed;
+    public static float bulletspeed;
 
     private void Update()
     {
         //if they are on
         if(turreton1)
         {
-            print("shoot");
             turret1.GetComponent<Turret>().shooting = true;
         }
         if (turreton2)
