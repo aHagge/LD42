@@ -12,7 +12,7 @@ public class Textapear : MonoBehaviour {
     private string currenttext;
 	// Use this for initialization
 	void Start () {
-        day = "Day 1";
+        day = "Day " + gamemanager.day;
 
         StartCoroutine(show());
 	}
