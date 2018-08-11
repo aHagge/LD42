@@ -261,8 +261,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1287692947}
   - component: {fileID: 1287692949}
-  - component: {fileID: 1287692948}
   - component: {fileID: 1287692950}
+  - component: {fileID: 1287692948}
   m_Layer: 0
   m_Name: TextMeshPro Text
   m_TagString: Untagged
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.2
-  day: Day 1
+  day: 
 --- !u!1 &2122318514
 GameObject:
   m_ObjectHideFlags: 0

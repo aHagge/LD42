@@ -6,6 +6,7 @@ public class Outlet : MonoBehaviour {
 
     public bool somethinginit;
 
+    public Sprite on, off;
 
     void Start () {
 		
@@ -16,10 +17,16 @@ public class Outlet : MonoBehaviour {
         if (transform.childCount != 0)
         {
             somethinginit = true;
+
         }
         if (transform.childCount == 0)
         {
             somethinginit = false;
         }
     }
+
+    IEnumerator die()
+        {
+
+        }
 }

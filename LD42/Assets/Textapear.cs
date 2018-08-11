@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Textapear : MonoBehaviour {
 
@@ -30,5 +31,9 @@ public class Textapear : MonoBehaviour {
             gameObject.GetComponent<TextMeshProUGUI>().text = currenttext;
             yield return new WaitForSeconds(delay);
         }
+        yield return new WaitForSeconds(2);
+        GameObject gm = GameObject.Find("GameManager");
+        gm.GetComponent<gamemanager>().startday();
+        SceneManager.LoadScene("Main");
     }
 }
