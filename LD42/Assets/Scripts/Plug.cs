@@ -106,7 +106,7 @@ public class Plug : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "Outlet" && !col.gameObject.GetComponent<Outlet>().somethinginit)
+        if(col.gameObject.tag == "Outlet" && !col.gameObject.GetComponent<Outlet>().somethinginit && !col.gameObject.GetComponent<Outlet>().broken)
         {
             gameObject.transform.parent = col.gameObject.transform;
         }

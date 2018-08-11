@@ -47,10 +47,6 @@ public class gamemanager : MonoBehaviour {
         {
             minutes = 0;
             hours++;
-            if(hours >= 3)
-            {
-                print("stop");
-            }
         }
 
         StartCoroutine(time());
