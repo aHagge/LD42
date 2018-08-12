@@ -38,6 +38,7 @@ public class Outlet : MonoBehaviour {
             fast = false;
             somethinginit = false;
             StopCoroutine(die());
+            
         }
         
         if (ran == 1)
@@ -120,7 +121,10 @@ public class Outlet : MonoBehaviour {
     }
     IEnumerator die()
         {
-        yield return new WaitForSeconds(Random.Range(5,10));
+        if(somethinginit)
+        {
+            yield return new WaitForSeconds(Random.Range(5, 10));
+        }    
 
         if(somethinginit)
         {

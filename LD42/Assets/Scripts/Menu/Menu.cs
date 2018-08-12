@@ -16,11 +16,22 @@ public class Menu : MonoBehaviour {
 	void Update () {
 		
 	}
-
+    public void credit()
+    {
+        normal.SetActive(false);
+        credits.SetActive(true);
+    }
+    public void normala()
+    {
+        normal.SetActive(true);
+        credits.SetActive(false);
+    }
     public void quit()
-    { }
+    {
+        Application.Quit();
+    }
     public void Startgame()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Story");
     }
 }
