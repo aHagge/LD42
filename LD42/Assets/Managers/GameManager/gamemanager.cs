@@ -55,7 +55,13 @@ public class gamemanager : MonoBehaviour {
 
 
     public void startday()
-    {        
+    {
+        simplezombiekilled = 0;
+        babyzombiekilled = 0;
+        giantzombiekilled = 0;
+        a = 0;
+        b = 0;
+        c = 0;
         hours = 9;
         minutes = 0;
         StartCoroutine(starti());      
@@ -63,16 +69,17 @@ public class gamemanager : MonoBehaviour {
     
     IEnumerator starti()
     {
-        scene = 0;
+        
         if (wavemanager != null)
         {
             wavemanager.GetComponent<Wavemanager>().startwave();
-            
+            yield return new WaitForFixedUpdate();
+            scene = 0;
         }
         else
         {
             yield return new WaitForSeconds(1);
-            StartCoroutine(starti());
+            StartCoroutine(starti());            
         }
     }
 
@@ -94,7 +101,7 @@ public class gamemanager : MonoBehaviour {
 
     IEnumerator time()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         minutes++;
         if (minutes >= 60)
         {
@@ -109,7 +116,7 @@ public class gamemanager : MonoBehaviour {
     private void FixedUpdate()
     {
 
-        if(wavemanager == null && scene == 0)
+        if(wavemanager == null && SceneManager.GetActiveScene().buildIndex == 4)
         {
             wavemanager = GameObject.Find("Wavemanager");
         }
@@ -117,7 +124,7 @@ public class gamemanager : MonoBehaviour {
         {
             timetext = IKnow.timetext.GetComponent<TextMeshProUGUI>();
         }
-        if (enddaytext == null && scene == 1)
+        if (enddaytext == null && SceneManager.GetActiveScene().buildIndex == 3)
         {
             enddaytext = IKnow.endtext.GetComponent<TextMeshProUGUI>();
             moneytext = IKnow.moneytext.GetComponent<TextMeshProUGUI>();
@@ -142,7 +149,7 @@ public class gamemanager : MonoBehaviour {
 
     IEnumerator info()
     {
-        texta = ("You killed:" + "  \r\n" + "  \r\n" + simplezombiekilled + " Common Zombies : " + a + "$" + "  \r\n" + "  \r\n" + babyzombiekilled + " Baby Zombies : " + b + "$" + "  \r\n" + "  \r\n" + giantzombiekilled + " Giant Zombies : " + c + "$" + "  \r\n" + "  \r\n" + "Total: " + money + "$");
+        texta = ("You killed:" + "  \r\n" + "  \r\n" + simplezombiekilled + " Common Zombies : " + a + "$" + "  \r\n" + "  \r\n" + babyzombiekilled + " Baby Zombies : " + b + "$" + "  \r\n" + "  \r\n" + giantzombiekilled + " Giant Zombies : " + c + "$" + "  \r\n" + "  \r\n" + "Total: " + (a+b+c) + "$");
         for (int i = 0; i < texta.Length + 1; i++)
         {
             currenttext = texta.Substring(0, i);

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class IKnow : MonoBehaviour {
 
@@ -20,9 +22,19 @@ public class IKnow : MonoBehaviour {
 
     public GameObject info;
 
+    public GameObject playbutton;
 
     // Use this for initialization
     void Start () {
+        if(playbutton != null)
+        {
+            playbutton.SetActive(false);
+        }
+     
+    }
+	
+	// Update is called once per frame
+	void Update () {
         if (timetext2 != null)
         {
             timetext = timetext2;
@@ -39,17 +51,17 @@ public class IKnow : MonoBehaviour {
         {
             wavemanager = wavemanager2;
         }
-        
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 
     public void close()
     {
         info.SetActive(false);
+        playbutton.SetActive(true);
+    }
+
+    public void nextday()
+    {
+        SceneManager.LoadScene("Day");
     }
 }

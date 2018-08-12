@@ -36,7 +36,7 @@ public class Zombie : MonoBehaviour {
     {
         col.enabled = false;
         anim.SetBool("Dead", true);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3.4f);
         if(simple)
         {
             gamemanager.simplezombiekilled++;

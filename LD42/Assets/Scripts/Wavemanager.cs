@@ -17,7 +17,7 @@ public class Wavemanager : MonoBehaviour {
     public void startwave()
     {
         i = 0;
-        InvokeRepeating("Spawn", 5f, 150 / Days[gamemanager.day].enemies.Length);
+        InvokeRepeating("Spawn", 5f, 105 / Days[gamemanager.day].enemies.Length);
     }
     public void Spawn()
     {
