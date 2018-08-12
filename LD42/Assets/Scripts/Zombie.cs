@@ -10,6 +10,7 @@ public class Zombie : MonoBehaviour {
 
     public Animator anim;
 
+    public bool simple, baby, giant;
 	void Start () {
         anim = GetComponent<Animator>();
         col = GetComponent<BoxCollider2D>();
@@ -36,6 +37,19 @@ public class Zombie : MonoBehaviour {
         col.enabled = false;
         anim.SetBool("Dead", true);
         yield return new WaitForSeconds(2.5f);
+        if(simple)
+        {
+            gamemanager.simplezombiekilled++;
+            print(gamemanager.simplezombiekilled);
+        }
+        if(baby)
+        {
+            gamemanager.babyzombiekilled++;
+        }
+        if(giant)
+        {
+            gamemanager.giantzombiekilled++;
+        }
         Destroy(gameObject);
     }
 }

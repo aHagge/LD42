@@ -26,22 +26,36 @@ public class gamemanager : MonoBehaviour {
     private int minutes;
     private int hours;
 
+
+
+    public static int simplezombiekilled;
+    public static int babyzombiekilled;
+    public static int giantzombiekilled;
+
+    public TextMeshProUGUI enddaytext;
     private void Start()
     {
+        startday();
+        print("start day");
         StartCoroutine(time());
-        startday();  
-    }
+        simplezombiekilled = 0;
+        babyzombiekilled = 0;
+        giantzombiekilled = 0;
+}
 
     public void startday()
     {
         scene = 0;
         hours = 9;
         minutes = 0;
+
     }
+
+
 
     IEnumerator time()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         minutes++;
         if (minutes >= 60)
         {
@@ -55,22 +69,38 @@ public class gamemanager : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if(hours == 16 && scene == 0)
+        if(timetext == null && scene == 0)
+        {
+            print(scene);
+            timetext = IKnow.timetext.GetComponent<TextMeshProUGUI>();
+        }
+        if (enddaytext == null && scene == 1)
+        {
+            enddaytext = IKnow.endtext.GetComponent<TextMeshProUGUI>();
+        }
+        if (hours == 14 && scene == 0)
         {
             Endday();
-            scene = 1;
         }
 
         if(timetext != null)
         {
             timetext.text = ("2025/07/" + day.ToString("D2") + "/" + hours.ToString("D2") + ":" + minutes.ToString("D2"));
-        }       
+        }
+        if (enddaytext != null)
+        {
+            int a = simplezombiekilled * Random.Range(50,70);
+            int b = babyzombiekilled * Random.Range(100, 120);
+            int c = giantzombiekilled * Random.Range(400, 500);
+            enddaytext.text = (simplezombiekilled + "Common Zombies Killed : " + a + "$" + "  \r\n" + "hello");
+        }
     }
 
     void Endday()
     {
         day++;
-        SceneManager.LoadScene("Day");
+        SceneManager.LoadScene("Shop");
+        scene = 1;
     }
 
     private void Update()
