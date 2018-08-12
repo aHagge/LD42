@@ -40,7 +40,6 @@ public class Zombie : MonoBehaviour {
         if(simple)
         {
             gamemanager.simplezombiekilled++;
-            print(gamemanager.simplezombiekilled);
         }
         if(baby)
         {

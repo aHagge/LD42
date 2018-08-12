@@ -25,6 +25,7 @@ public class Turret : MonoBehaviour {
         if(!shooting)
         {
             gotit = false;
+            StopAllCoroutines();
         }      
 	}
 

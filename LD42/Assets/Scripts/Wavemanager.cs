@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class Wavemanager : MonoBehaviour {
 
-    public GameObject simplezombie;
-    public GameObject babyzombie;
-    public GameObject giantzombie;
 
     public Transform[] spawnpoint;
-    public float spawnspeed;
+
+    private int i;
+    public Dayly[] Days;
 
 	void Start () {
-        spawnspeed = 5;
-        InvokeRepeating("Spawn", 5f, spawnspeed);
+        
     }
 
-    void Spawn()
+    public void startwave()
     {
-        Instantiate(simplezombie, spawnpoint[Random.Range(0, spawnpoint.Length)].position, Quaternion.identity);
+        i = 0;
+        InvokeRepeating("Spawn", 5f, 150 / Days[gamemanager.day].enemies.Length);
+    }
+    public void Spawn()
+    {
+        Instantiate(Days[gamemanager.day].enemies[i], spawnpoint[Random.Range(0, spawnpoint.Length)].position, Quaternion.identity);
+        i++;
     }
 }

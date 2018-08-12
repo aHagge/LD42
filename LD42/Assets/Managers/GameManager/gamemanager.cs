@@ -26,36 +26,75 @@ public class gamemanager : MonoBehaviour {
     private int minutes;
     private int hours;
 
-
+    public static int money;
 
     public static int simplezombiekilled;
     public static int babyzombiekilled;
     public static int giantzombiekilled;
 
+    public TextMeshProUGUI moneytext;
     public TextMeshProUGUI enddaytext;
+
+    public GameObject wavemanager;
+
+    public string texta;
+    public string currenttext;
+
+    public float delay;
+
     private void Start()
     {
-        startday();
-        print("start day");
+        scene = 2;
+        day++;
         StartCoroutine(time());
         simplezombiekilled = 0;
         babyzombiekilled = 0;
         giantzombiekilled = 0;
 }
 
+
+
     public void startday()
-    {
-        scene = 0;
+    {        
         hours = 9;
         minutes = 0;
+        StartCoroutine(starti());      
+    }
+    
+    IEnumerator starti()
+    {
+        scene = 0;
+        if (wavemanager != null)
+        {
+            wavemanager.GetComponent<Wavemanager>().startwave();
+            
+        }
+        else
+        {
+            yield return new WaitForSeconds(1);
+            StartCoroutine(starti());
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Zombie" || col.gameObject.tag == "Zombie2" || col.gameObject.tag == "Zombie3")
+        {
+            YourFired();
+        }
+
 
     }
 
-
+    public void YourFired()
+    {
+        scene = 2;
+        SceneManager.LoadScene("Fired");
+    }
 
     IEnumerator time()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         minutes++;
         if (minutes >= 60)
         {
@@ -69,14 +108,20 @@ public class gamemanager : MonoBehaviour {
 
     private void FixedUpdate()
     {
+
+        if(wavemanager == null && scene == 0)
+        {
+            wavemanager = GameObject.Find("Wavemanager");
+        }
         if(timetext == null && scene == 0)
         {
-            print(scene);
             timetext = IKnow.timetext.GetComponent<TextMeshProUGUI>();
         }
         if (enddaytext == null && scene == 1)
         {
             enddaytext = IKnow.endtext.GetComponent<TextMeshProUGUI>();
+            moneytext = IKnow.moneytext.GetComponent<TextMeshProUGUI>();
+
         }
         if (hours == 14 && scene == 0)
         {
@@ -89,18 +134,32 @@ public class gamemanager : MonoBehaviour {
         }
         if (enddaytext != null)
         {
-            int a = simplezombiekilled * Random.Range(50,70);
-            int b = babyzombiekilled * Random.Range(100, 120);
-            int c = giantzombiekilled * Random.Range(400, 500);
-            enddaytext.text = (simplezombiekilled + "Common Zombies Killed : " + a + "$" + "  \r\n" + "hello");
+            moneytext.text = (money + "$");
+            StartCoroutine(info());
+            
         }
     }
 
+    IEnumerator info()
+    {
+        texta = ("You killed:" + "  \r\n" + "  \r\n" + simplezombiekilled + " Common Zombies : " + a + "$" + "  \r\n" + "  \r\n" + babyzombiekilled + " Baby Zombies : " + b + "$" + "  \r\n" + "  \r\n" + giantzombiekilled + " Giant Zombies : " + c + "$" + "  \r\n" + "  \r\n" + "Total: " + money + "$");
+        for (int i = 0; i < texta.Length + 1; i++)
+        {
+            currenttext = texta.Substring(0, i);
+            enddaytext.text = currenttext;
+            yield return new WaitForSeconds(delay);
+        }
+    }
+    public int a, b, c;
     void Endday()
     {
         day++;
         SceneManager.LoadScene("Shop");
         scene = 1;
+        a = simplezombiekilled * Random.Range(50, 70);
+        b = babyzombiekilled * Random.Range(100, 120);
+        c = giantzombiekilled * Random.Range(400, 500);
+        money += (a + b + c);
     }
 
     private void Update()
@@ -126,6 +185,15 @@ public class gamemanager : MonoBehaviour {
 
                 turret4.GetComponent<Turret>().shooting = true;
             }
+        } else
+        {
+            if(scene == 0)
+            {
+                turret1 = GameObject.Find("Turrets 1");
+                turret2 = GameObject.Find("Turrets 2");
+                turret3 = GameObject.Find("Turrets 3");
+                turret4 = GameObject.Find("Turrets 4");
+            }        
         }
 
 

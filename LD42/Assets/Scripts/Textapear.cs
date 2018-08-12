@@ -11,6 +11,7 @@ public class Textapear : MonoBehaviour {
     public string day;
 
     private string currenttext;
+
 	// Use this for initialization
 	void Start () {
         day = "Day " + gamemanager.day;
@@ -20,7 +21,6 @@ public class Textapear : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
     IEnumerator show()
@@ -31,7 +31,7 @@ public class Textapear : MonoBehaviour {
             gameObject.GetComponent<TextMeshProUGUI>().text = currenttext;
             yield return new WaitForSeconds(delay);
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         GameObject gm = GameObject.Find("GameManager");
         gm.GetComponent<gamemanager>().startday();
         SceneManager.LoadScene("Main");
