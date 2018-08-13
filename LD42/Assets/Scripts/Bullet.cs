@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour {
     public float speed;
 
 	void Start () {
+        speed = gamemanager.bulletspeed;
         bullethealth = gamemanager.bulletpenetration;
         Destroy(gameObject, 10);
 	}

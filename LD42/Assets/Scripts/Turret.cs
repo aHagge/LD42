@@ -31,7 +31,7 @@ public class Turret : MonoBehaviour {
 
     IEnumerator Shoot()
     {       
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(gamemanager.turretspeed);
         if(shooting)
         {
             Instantiate(bullet, shootinghole.position, Quaternion.identity);

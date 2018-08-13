@@ -22,24 +22,9 @@ GameObject:
   - component: {fileID: 114328636100809502}
   - component: {fileID: 61890047675882656}
   - component: {fileID: 50309810898136216}
+  - component: {fileID: 114144156097048866}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1984763201453792
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4880706356225858}
-  - component: {fileID: 114342961679724858}
-  m_Layer: 0
-  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,22 +39,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4880706356225858}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4880706356225858
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1984763201453792}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4069719160071112}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50309810898136216
@@ -117,6 +88,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9, y: 12.16}
   m_EdgeRadius: 0
+--- !u!114 &114144156097048866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1407893265485702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6079a1cf0cfe8e47823241bd9bb837c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  credits: {fileID: 0}
+  normal: {fileID: 0}
 --- !u!114 &114328636100809502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,18 +119,10 @@ MonoBehaviour:
   turret4: {fileID: 0}
   moneytext: {fileID: 0}
   enddaytext: {fileID: 0}
+  wavemanager: {fileID: 0}
+  texta: 
+  currenttext: 
+  delay: 0
   a: 0
   b: 0
   c: 0
---- !u!114 &114342961679724858
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1984763201453792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c8ce73133f456840a76195199f46317, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds: []

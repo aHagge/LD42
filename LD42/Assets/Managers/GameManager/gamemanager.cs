@@ -18,11 +18,12 @@ public class gamemanager : MonoBehaviour {
 
     public static int bulletpenetration = 1;
     public static float bulletdmg = 30;
-    public static float turretspeed;
-    public static float bulletspeed;
+    public static float turretspeed = 1.5f;
+    public static float bulletspeed = 10;
 
     public static int day;
 
+    public static int alvl, blvl, clvl, dlvl;
     private int minutes;
     private int hours;
 
@@ -42,6 +43,8 @@ public class gamemanager : MonoBehaviour {
 
     public float delay;
 
+
+    public static int pencost = 500, dmgcost = 70, turretspeedcost = 150, bullespeedcost = 100;
     private void Start()
     {
         scene = 2;
@@ -101,7 +104,7 @@ public class gamemanager : MonoBehaviour {
 
     IEnumerator time()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.35f);
         minutes++;
         if (minutes >= 60)
         {
@@ -124,7 +127,7 @@ public class gamemanager : MonoBehaviour {
         {
             timetext = IKnow.timetext.GetComponent<TextMeshProUGUI>();
         }
-        if (enddaytext == null && SceneManager.GetActiveScene().buildIndex == 3)
+        if (enddaytext == null && SceneManager.GetActiveScene().buildIndex == 3 && IKnow.endtext != null)
         {
             enddaytext = IKnow.endtext.GetComponent<TextMeshProUGUI>();
             moneytext = IKnow.moneytext.GetComponent<TextMeshProUGUI>();

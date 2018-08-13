@@ -4,27 +4,55 @@ using UnityEngine;
 using TMPro;
 public class Upgrading : MonoBehaviour {
 
-    public int cost;
-
     public bool penetration, turretspeed, bulletspeed, dmg;
 
-    public int level;
+    private int level;
 
+    private int cost;
     public TextMeshProUGUI costtext;
     public TextMeshProUGUI leveltext;
 
     public GameObject[] leveldots;
 
-    private int i;
+    private int a;
 	// Use this for initialization
 	void Start () {
-		
-	}
+		foreach(GameObject a in leveldots)
+        {
+            a.SetActive(false);
+        }
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        leveltext.text = level.ToString();
+        costtext.text = cost.ToString();
+        if(penetration)
+        {
+            level = gamemanager.alvl;
+            cost = gamemanager.pencost;
+        }
+        if (bulletspeed)
+        {
+            level = gamemanager.blvl;
+            cost = gamemanager.bullespeedcost;
+        }
+        if (dmg)
+        {
+            level = gamemanager.clvl;
+            cost = gamemanager.dmgcost;
+        }
+        if (turretspeed)
+        {
+            level = gamemanager.dlvl;
+            cost = gamemanager.turretspeedcost;
+        }
+        for (int i = 0; i < level; i++)
+        {
+            leveldots[i].SetActive(true);
+        }
+    }
 
     public void upgrade()
     {
@@ -34,10 +62,37 @@ public class Upgrading : MonoBehaviour {
             {
                 gamemanager.bulletpenetration++;
                 gamemanager.money -= cost;
-                level++;
-                leveldots[i].SetActive(true);
-                i++;
-                cost += 70;
+                gamemanager.alvl++;
+                leveldots[a].SetActive(true);
+                a++;
+                gamemanager.pencost += 70;
+            }
+            if (dmg)
+            {
+                gamemanager.clvl++;
+                gamemanager.bulletdmg += 10;
+                gamemanager.money -= cost;
+                leveldots[a].SetActive(true);
+                a++;
+                gamemanager.dmgcost += 50;
+            }
+            if (bulletspeed)
+            {
+                gamemanager.blvl++;
+                gamemanager.bulletspeed += 1;
+                gamemanager.money -= cost;
+                leveldots[a].SetActive(true);
+                a++;
+                gamemanager.bullespeedcost += 70;
+            }
+            if (turretspeed)
+            {
+                gamemanager.dlvl++;
+                gamemanager.turretspeed -= 0.1f;
+                gamemanager.money -= cost;
+                leveldots[a].SetActive(true);
+                a++;
+                gamemanager.turretspeedcost += 70;
             }
         }
     }

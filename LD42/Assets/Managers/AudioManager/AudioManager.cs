@@ -1,7 +1,7 @@
 ﻿using UnityEngine.Audio;
 using UnityEngine;
 using System;
-
+using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour {
 
     public Sound[] sounds;
@@ -10,16 +10,10 @@ public class AudioManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		foreach (Sound s in sounds)
+        DontDestroyOnLoad(gameObject);
+        foreach (Sound s in sounds)
         {
-            if (instance == null)
-                instance = this;
-            else
-            {
-                Destroy(gameObject);
-                return;
-            }
-            DontDestroyOnLoad(gameObject);
+            
             s.Source = gameObject.AddComponent<AudioSource>();
             s.Source.clip = s.Clip;
 
@@ -39,6 +33,28 @@ public class AudioManager : MonoBehaviour {
         }
         s.Source.Play();
     }
-    
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Cant find sound!");
+            return;
+        }
+        s.Source.Stop();
+    }
 
+
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if(level == 0)
+        {
+            Play("Menu");
+        }
+        if (level == 1)
+        {
+            Play("Story");                    
+        }
+    }
 }
