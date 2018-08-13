@@ -18,20 +18,40 @@ public class Menu : MonoBehaviour {
 	}
     public void credit()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
         normal.SetActive(false);
         credits.SetActive(true);
     }
     public void normala()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
         normal.SetActive(true);
         credits.SetActive(false);
     }
     public void quit()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
         Application.Quit();
     }
     public void Startgame()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
         SceneManager.LoadScene("Story");
+    }
+
+    public int width;
+    public int height;
+    public void setwith(int newwith)
+    {
+        width = newwith;
+    }
+    public void setheight(int newheight)
+    {
+        height = newheight;
+    }
+
+    public void Setres()
+    {
+        Screen.SetResolution(width, height, false);
     }
 }

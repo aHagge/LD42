@@ -56,12 +56,19 @@ public class IKnow : MonoBehaviour {
 
     public void close()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
         info.SetActive(false);
         playbutton.SetActive(true);
     }
 
     public void nextday()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
         SceneManager.LoadScene("Day");
+    }
+
+    public void restart()
+    {
+        GameObject.Find("GameManager").GetComponent<gamemanager>().restart();
     }
 }

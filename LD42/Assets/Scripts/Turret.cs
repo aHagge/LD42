@@ -34,6 +34,7 @@ public class Turret : MonoBehaviour {
         yield return new WaitForSeconds(gamemanager.turretspeed);
         if(shooting)
         {
+            FindObjectOfType<AudioManager>().Play("Shoot");
             Instantiate(bullet, shootinghole.position, Quaternion.identity);
             StartCoroutine(Shoot());
         }

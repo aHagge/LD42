@@ -128,6 +128,7 @@ public class Outlet : MonoBehaviour {
 
         if(somethinginit)
         {
+            FindObjectOfType<AudioManager>().Play("El");
             gameObject.GetComponent<SpriteRenderer>().sprite = el;
             transform.GetChild(0).transform.parent = null;
             yield return new WaitForSeconds(0.3f);

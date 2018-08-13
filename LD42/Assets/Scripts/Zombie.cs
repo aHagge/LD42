@@ -14,8 +14,19 @@ public class Zombie : MonoBehaviour {
 	void Start () {
         anim = GetComponent<Animator>();
         col = GetComponent<BoxCollider2D>();
-
-     }
+        if(simple)
+        {
+            FindObjectOfType<AudioManager>().Play("Simple zombie");
+        }
+        if (simple)
+        {
+            FindObjectOfType<AudioManager>().Play("Baby zombie");
+        }
+        if (simple)
+        {
+            FindObjectOfType<AudioManager>().Play("Giant zombie");
+        }
+    }
 
     public BoxCollider2D col;
     private bool gud;

@@ -56,7 +56,8 @@ public class Upgrading : MonoBehaviour {
 
     public void upgrade()
     {
-        if(cost <= gamemanager.money && level < 10)
+        FindObjectOfType<AudioManager>().Play("Click");
+        if (cost <= gamemanager.money && level < 10)
         {
             if(penetration)
             {

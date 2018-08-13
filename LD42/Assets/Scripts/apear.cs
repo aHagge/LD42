@@ -27,6 +27,7 @@ public class apear : MonoBehaviour {
     public void starta()
     {
         SceneManager.LoadScene("Day");
+        FindObjectOfType<AudioManager>().Play("Click");
     }
 
     IEnumerator start()
@@ -37,5 +38,6 @@ public class apear : MonoBehaviour {
             gameObject.GetComponent<TextMeshProUGUI>().text = currenttext;
             yield return new WaitForSeconds(delay);
         }
+        FindObjectOfType<AudioManager>().Stop("Typing");
     }
 }

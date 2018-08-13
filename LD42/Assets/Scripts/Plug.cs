@@ -59,14 +59,17 @@ public class Plug : MonoBehaviour {
         if(inover && Input.GetMouseButtonDown(0))
         {
             inhand = true;
+            if(transform.parent != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Out");
+            }
         }
 
         if(Input.GetMouseButtonUp(0))
         {
             inhand = false;
             if(transform.parent != null)
-            {
-                
+            {               
                 transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z - 1);
                 if (turretid == 1)
                 {
@@ -84,7 +87,12 @@ public class Plug : MonoBehaviour {
                 {
                     gamemanager.turreton4 = true;
                 }
-            }          
+                if (inover)
+                {
+                    FindObjectOfType<AudioManager>().Play("In");
+                }
+            } 
+                     
         }
         if (inhand)
         {
@@ -109,12 +117,11 @@ public class Plug : MonoBehaviour {
         if(col.gameObject.tag == "Outlet" && !col.gameObject.GetComponent<Outlet>().somethinginit && !col.gameObject.GetComponent<Outlet>().broken)
         {
             gameObject.transform.parent = col.gameObject.transform;
-        }
-        
+        }      
     }
     private void OnTriggerExit2D(Collider2D col)
     {
-        transform.SetParent(null);
+        transform.SetParent(null);      
     }
 
 }

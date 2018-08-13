@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
         if(bullethealth <= 0)
         {
+            FindObjectOfType<AudioManager>().Play("Hit");
             Destroy(gameObject);
           
         }
