@@ -23,6 +23,7 @@ public class Plug : MonoBehaviour {
         if(transform.parent != null)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = onsprite;
+            
         }
         if (transform.parent == null)
         {
@@ -57,10 +58,11 @@ public class Plug : MonoBehaviour {
         p = c.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 9));
 
         if(inover && Input.GetMouseButtonDown(0))
-        {
+        {        
             inhand = true;
             if(transform.parent != null)
             {
+                transform.parent.GetComponent<Outlet>().stop();
                 FindObjectOfType<AudioManager>().Play("Out");
             }
         }
@@ -70,7 +72,7 @@ public class Plug : MonoBehaviour {
             inhand = false;
             if(transform.parent != null)
             {               
-                transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z - 1);
+                transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z - 1);               
                 if (turretid == 1)
                 {
                     gamemanager.turreton1 = true;
@@ -89,7 +91,7 @@ public class Plug : MonoBehaviour {
                 }
                 if (inover)
                 {
-                    FindObjectOfType<AudioManager>().Play("In");
+                    FindObjectOfType<AudioManager>().Play("In");                   
                 }
             } 
                      

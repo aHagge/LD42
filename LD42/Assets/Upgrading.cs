@@ -66,7 +66,7 @@ public class Upgrading : MonoBehaviour {
                 gamemanager.alvl++;
                 leveldots[a].SetActive(true);
                 a++;
-                gamemanager.pencost += 70;
+                gamemanager.pencost += 100;
             }
             if (dmg)
             {
@@ -75,7 +75,7 @@ public class Upgrading : MonoBehaviour {
                 gamemanager.money -= cost;
                 leveldots[a].SetActive(true);
                 a++;
-                gamemanager.dmgcost += 50;
+                gamemanager.dmgcost += 70;
             }
             if (bulletspeed)
             {
@@ -84,7 +84,7 @@ public class Upgrading : MonoBehaviour {
                 gamemanager.money -= cost;
                 leveldots[a].SetActive(true);
                 a++;
-                gamemanager.bullespeedcost += 70;
+                gamemanager.bullespeedcost += 50;
             }
             if (turretspeed)
             {
@@ -93,7 +93,7 @@ public class Upgrading : MonoBehaviour {
                 gamemanager.money -= cost;
                 leveldots[a].SetActive(true);
                 a++;
-                gamemanager.turretspeedcost += 70;
+                gamemanager.turretspeedcost += 60;
             }
         }
     }

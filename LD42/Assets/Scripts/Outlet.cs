@@ -17,28 +17,28 @@ public class Outlet : MonoBehaviour {
 
     private int ran;
 
-    void Start () {
-		
-	}
-
     private int left;
 
     private bool fast;
 
-	void FixedUpdate () {
+    public Coroutine latest;
+
+    public void stop()
+    {
+        StopCoroutine(latest);
+    }
+    void FixedUpdate () {
         if (transform.childCount != 0 && !fast)
         {
             somethinginit = true;
-            StartCoroutine(die());
+            latest = StartCoroutine(die());           
             fast = true;
 
         }
         if (transform.childCount == 0)
         {
             fast = false;
-            somethinginit = false;
-            StopCoroutine(die());
-            
+            somethinginit = false;                      
         }
         
         if (ran == 1)
@@ -119,15 +119,17 @@ public class Outlet : MonoBehaviour {
         yield return new WaitForSeconds(0.1f);
         button.transform.localScale = new Vector3(1.5749f, 1.5749f, 1.5749f);
     }
+
     IEnumerator die()
         {
-        if(somethinginit)
+        if (somethinginit)
         {
-            yield return new WaitForSeconds(Random.Range(5, 10));
+            yield return new WaitForSeconds(Random.Range(6.5f, 8));
         }    
 
         if(somethinginit)
         {
+            
             FindObjectOfType<AudioManager>().Play("El");
             gameObject.GetComponent<SpriteRenderer>().sprite = el;
             transform.GetChild(0).transform.parent = null;

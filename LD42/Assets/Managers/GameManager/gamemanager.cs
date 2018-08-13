@@ -44,7 +44,7 @@ public class gamemanager : MonoBehaviour {
     public float delay;
 
 
-    public static int pencost = 1000, dmgcost = 200, turretspeedcost = 250, bullespeedcost = 150;
+    public static int pencost = 1600, dmgcost = 200, turretspeedcost = 250, bullespeedcost = 150;
     private void Start()
     {
         scene = 2;
@@ -166,7 +166,7 @@ public class gamemanager : MonoBehaviour {
         day++;
         SceneManager.LoadScene("Shop");
         scene = 1;
-        a = simplezombiekilled * Random.Range(10, 35);
+        a = simplezombiekilled * Random.Range(15, 35);
         b = babyzombiekilled * Random.Range(35, 50);
         c = giantzombiekilled * Random.Range(100, 150);
         money += (a + b + c);
@@ -246,6 +246,10 @@ public class gamemanager : MonoBehaviour {
 
     public void restart()
     {
+        pencost = 1600;
+        dmgcost = 200;
+        turretspeedcost = 250;
+        bullespeedcost = 150;
         day = 1;
         money = 0;
         a = 0;

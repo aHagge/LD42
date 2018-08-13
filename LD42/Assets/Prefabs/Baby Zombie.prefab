@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  health: 40
+  health: 50
   anim: {fileID: 0}
   simple: 0
   baby: 1
